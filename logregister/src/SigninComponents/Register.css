@@ -1,0 +1,23 @@
+body{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+}
+.loginHead{
+     background: -webkit-linear-gradient(left, #3931af, #00c6ff);   
+}
+.registerContent{
+    background: #f8f9fa;
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+    height: 75%;
+    position: fixed;
+    width: 100%;
+}
+
+.content1{
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+.content2{
+    margin-top: 5%;
+}
