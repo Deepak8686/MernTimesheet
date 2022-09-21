@@ -1,6 +1,5 @@
-const mongoose = require('mongoose')
-const autoIncrement = require("mongoose-auto-increment");
-
+import mongoose from 'mongoose';
+import autoIncrement from "mongoose-auto-increment";
 
 const Schema = mongoose.Schema
 
@@ -30,4 +29,5 @@ registerSchema.plugin(autoIncrement.plugin, {
     startAt: 1,
     incrementBy: 1,
 });
-module.exports = mongoose.model('Register', registerSchema)
+
+export default mongoose.model('Register', registerSchema)

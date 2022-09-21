@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema
 
@@ -17,4 +17,4 @@ const VerifySchema = new Schema({
     }
 }, { timestamps: false })
 
-module.exports = mongoose.model('Verification', VerifySchema)
+export default mongoose.model('Verification', VerifySchema)

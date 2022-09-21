@@ -1,8 +1,8 @@
-const register = require('../models/RegisterModel')
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+import register from '../models/RegisterModel.js';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
-const registerctrl = async (req, res) => {
+export const registerctrl = async (req, res) => {
 
 
     try {
@@ -26,7 +26,7 @@ const registerctrl = async (req, res) => {
 }
 
 
-const Loginctrl = async (req, res) => {
+export const Loginctrl = async (req, res) => {
     const { Email_Id, password } = req.body;
     try {
 
@@ -46,7 +46,7 @@ const Loginctrl = async (req, res) => {
         res.status(400).json({ error: "Network Error" });
     }
 }
-const Changepassword = async (req, res) => {
+export const Changepassword = async (req, res) => {
     const { Email_Id, password } = req.body
     try {
         if (!Email_Id) return res.status(400).json({ error: "Email Id missing" });
@@ -60,13 +60,13 @@ const Changepassword = async (req, res) => {
 
 }
 
-const Userctrl = async (req, res) => {
+export const Userctrl = async (req, res) => {
 
     const find = await register.find({}).sort({ Username: 1 });
     res.status(200).json(find);
 }
 
-const Singleuserctrl = async (req, res) => {
+export const Singleuserctrl = async (req, res) => {
     try {
         const { Email_Id } = req.params
 
@@ -76,14 +76,4 @@ const Singleuserctrl = async (req, res) => {
     } catch (error) {
         return res.status(400).json({ error: error.message });
     }
-}
-
-
-
-module.exports = {
-    registerctrl,
-    Loginctrl,
-    Changepassword,
-    Userctrl,
-    Singleuserctrl
 }

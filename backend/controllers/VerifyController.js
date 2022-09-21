@@ -1,10 +1,8 @@
-const register = require('../models/RegisterModel');
-const nodemailer = require('nodemailer');
-const Verification = require('../models/VerificationModal');
-require('dotenv').config();
-const twilio = require('twilio');
-var springedge = require('springedge');
-const fast2sms = require('fast-two-sms');
+import register from '../models/RegisterModel.js';
+import nodemailer from 'nodemailer';
+import Verification from '../models/VerificationModal.js';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 const mail_subject_verify = "OTP: For Email Verification";
 const message_subject_verify = (otp) => {
@@ -28,7 +26,7 @@ const message_subject_changepassword = (otp) => {
     )
 }
 
-const MailVerification = async (req, res) => {
+export const MailVerification = async (req, res) => {
 
     try {
         const { Email_Id, type } = req.body;
@@ -84,24 +82,9 @@ const MailVerification = async (req, res) => {
     }
 }
 
-const PhoneVerification = async (req, res) => {
+export const PhoneVerification = async (req, res) => {
 
     try {
-        // const accountSid = ACcde657f0a69f4371687389a8c315f0fc
-        // const authToken = c9156985f826c6e5a3821d906a798d35
-        // const client = new twilio(accountSid, authToken);
-
-        // await client.messages
-        //     .create({
-        //         body: 'Hello from Node',
-        //         to: '+918825724239',
-        //         from: '+17817981840'
-        //     })
-        //     .then((message) => {
-        //         res.status(200).json({ message: "success" })
-        //     })
-
-        //     .catch((error) => console.log("Error Occured"));
 
         var options = {
             authorization:
@@ -119,19 +102,13 @@ const PhoneVerification = async (req, res) => {
                 res.status(400).json({ error: "Some error taken place" })
             });
 
-        // springedge.messages.send(params, 6000, function (err, response) {
-        //     if (err) {
-        //         return console.log(err);
-        //     }
-        //     console.log(response);
-        // });
     } catch (error) {
         return res.status(400).json({ error: "Network Error" });
     }
 
 }
 
-const VerifyOtp = async (req, res) => {
+export const VerifyOtp = async (req, res) => {
     try {
         const { id, otp } = req.body;
 
@@ -143,10 +120,4 @@ const VerifyOtp = async (req, res) => {
     } catch (error) {
         return response.status(500).json({ message: error.message });
     }
-}
-
-module.exports = {
-    MailVerification,
-    PhoneVerification,
-    VerifyOtp
 }
