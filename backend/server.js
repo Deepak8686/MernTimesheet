@@ -1,10 +1,11 @@
-const express = require('express')
-const mongoose = require('mongoose')
-require('dotenv').config()
-const registers = require('./routes/register')
-const verify = require('./routes/VerificationRoute')
-const cors = require('cors')
-const bodyParser = require('body-parser')
+import express from 'express';
+import mongoose from 'mongoose';
+import registers from './routes/register.js'
+import verify from './routes/VerificationRoute.js';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 const app = express()
 var corsOptions = {
