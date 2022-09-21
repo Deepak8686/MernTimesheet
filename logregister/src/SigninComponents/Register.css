@@ -1,10 +1,12 @@
-body{
+body {
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
 }
-.loginHead{
-     background: -webkit-linear-gradient(left, #3931af, #00c6ff);   
+
+.loginHead {
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
 }
-.registerContent{
+
+.registerContent {
     background: #f8f9fa;
     border-top-left-radius: 10% 50%;
     border-bottom-left-radius: 10% 50%;
@@ -13,11 +15,21 @@ body{
     width: 100%;
 }
 
-.content1{
-    margin-left: 10%;
+.content1 {
+    margin-left: 4%;
     margin-top: 5%;
+    text-align: left;
+    padding: 3%;
 }
 
-.content2{
+.content2 {
     margin-top: 5%;
+    padding: 3%;
+}
+
+.content3 {
+    margin-left: 2%;
+    margin-top: 5%;
+    text-align: left;
+    padding: 3%;
 }

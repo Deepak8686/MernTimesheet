@@ -22,7 +22,8 @@ const Homes = () => {
     const [current, setCurrent] = useState(location.pathname);
     const token = sessionStorage.getItem("token");
     const mail = sessionStorage.getItem("Email");
-    const [username, setUsername] = useState('');
+    const [firstname, setUsername] = useState('');
+    const [lastname, setLastname] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const clientdtl = async () => {
@@ -31,7 +32,8 @@ const Homes = () => {
                 'Authorization': `Bearer ${token}`
             }
         })
-        setUsername(response.data.Username);
+        setUsername(response.data.Firstname);
+        setLastname(response.data.Lastname);
     }
 
     useEffect(() => {
@@ -71,9 +73,7 @@ const Homes = () => {
     ];
 
     const text = 'Are you sure, want to Logout?';
-    const confirm = () => {
-        message.info('Clicked on Yes.');
-    };
+
     const modal = () => {
         setIsModalOpen(true);
     };
@@ -96,12 +96,11 @@ const Homes = () => {
             </Sider>
             <Layout>
                 <Header style={{ backgroundColor: "white", textAlign: "end" }}>
-                    {/* <p style={{ position: "fixed", textAlign: "left", marginLeft: "14%", fontSize: 20 }} ><b>{username.toLocaleUpperCase()}</b></p> */}
-                    <Button type="link" onClick={modal} style={{ position: "fixed", textAlign: "right", marginTop: "0.7%", marginLeft: "-4%" }} title={username}><Avatar src="https://joeschmoe.io/api/v1/random" /></Button>
+                    <Button type="link" onClick={modal} style={{ position: "fixed", textAlign: "right", marginTop: "0.7%", marginLeft: "-4%" }} title={firstname.toLocaleUpperCase() + " " + lastname.toLocaleUpperCase()}><Avatar src="https://joeschmoe.io/api/v1/random" /></Button>
                     <Modal
                         closable={false}
                         title={<div style={{ textAlign: "center" }}><Avatar src="https://joeschmoe.io/api/v1/random" size={70} />
-                            <h3 style={{ marginTop: "5%" }}>{username.toLocaleUpperCase()}</h3></div>}
+                            <h3 style={{ marginTop: "5%" }}>{firstname.toLocaleUpperCase() + " " + lastname.toLocaleUpperCase()}</h3></div>}
                         open={isModalOpen}
                         width={250}
                         style={{ marginLeft: "80%", width: "10%" }}

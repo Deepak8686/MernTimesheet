@@ -18,7 +18,17 @@ const Getemployee = () => {
         },
         {
             title: "USRENAME",
-            dataIndex: "Username",
+            render: (record: any) => (
+                <span>{record.Firstname} {record.Lastname}</span>
+            )
+        },
+        {
+            title: "Designation",
+            dataIndex: "Designation_Id"
+        },
+        {
+            title: "Type",
+            dataIndex: "Employeetype_Id"
         },
         {
             title: "Email ID",
