@@ -37,7 +37,7 @@ export const Loginctrl = async (req, res) => {
 
         if (hasedPassword == true) {
             const token = jwt.sign({ name: existingMail.Username, id: existingMail._id }, 'FirstJwtTokenCreation', { expiresIn: '5h' });
-            return res.status(200).json({ userId: existingMail._id, token, success: `${existingMail.Username}, You are Logged in successfully` })
+            return res.status(200).json({ userId: existingMail._id, token, success: `${existingMail.Firstname + "" + existingMail.Lastname}, You are Logged in successfully` })
         } else {
             return res.status(400).json({ error: "Incorrect Password" });
         }
