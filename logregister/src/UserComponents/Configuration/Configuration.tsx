@@ -4,7 +4,6 @@ import Button from "antd-button-color";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Client from "./client";
 
 const Configuration = () => {
 
@@ -64,7 +63,6 @@ const Configuration = () => {
             <Layout>
 
                 <Content>
-                    <Client />
                     <Routes>
                         <Route path="" />
                         <Route path="" />
