@@ -35,6 +35,6 @@ export const IsactiveEmp = async (req, res) => {
         const isemp = await register.findOneAndUpdate({ Employee_Id }, { Isactive });
         return res.status(200).json({ success: "Updated Successfull" });
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        return res.status(400).json({ error: error.message });
     }
 }

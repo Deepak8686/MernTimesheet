@@ -1,10 +1,14 @@
-import { Card, Table } from "antd"
+import { Card, Input, Select, Space, Table } from "antd"
+import Button from "antd-button-color";
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import moment from "moment";
+import { SearchOutlined } from "@ant-design/icons";
 
 const Getemployee = () => {
 
+    const { Option } = Select;
     const navigate = useNavigate();
     const token = sessionStorage.getItem("token");
     const [page, setPage] = useState(1);
@@ -44,7 +48,8 @@ const Getemployee = () => {
         },
         {
             title: "Joining Date",
-            dataIndex: "Joiningdate"
+            dataIndex: "Joiningdate",
+            render: (Joiningdate: any) => { return (<p>{moment(Joiningdate).format("DD-MM-YYYY")}</p>) }
         },
         {
             title: "End Date",
@@ -70,8 +75,20 @@ const Getemployee = () => {
     }, []);
 
     return (
-        <div className="loginHead">
+        <div>
             <Card >
+                <Space style={{ marginRight: "50%", marginBottom: "1.5%" }}>
+                    <b style={{ marginTop: "5%" }}>Search</b>
+                    <Input type="text" />
+                    <b style={{ marginTop: "5%" }}>Active</b>
+                    <Select defaultValue={0}>
+                        <Option value={0}>Yes</Option>
+                        <Option value={1}>No</Option>
+                    </Select>
+                    <Button type="primary">ADD EMPLOYEE</Button>
+                    <Button type="danger">DEACTIVATE</Button>
+                    <Button style={{ backgroundColor: "#17a2b8", color: "white" }}>EDIT</Button>
+                </Space>
                 <Table
                     columns={column}//@ts-ignore
                     dataSource={employeeData}

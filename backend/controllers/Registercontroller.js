@@ -34,8 +34,8 @@ export const Loginctrl = async (req, res) => {
         const hasedPassword = await bcrypt.compare(password, existingMail.password);
 
         if (hasedPassword == true) {
-            const token = jwt.sign({ name: existingMail.Username, id: existingMail._id }, 'FirstJwtTokenCreation', { expiresIn: '7h' });
-            return res.status(200).json({ userId: existingMail._id, token, success: `${existingMail.Firstname + " " + existingMail.Lastname}, You are Logged in successfully` })
+            const token = jwt.sign({ name: existingMail.Username, id: existingMail._id }, 'FirstJwtTokenCreation', { expiresIn: '5h' });
+            return res.status(200).json({ userId: existingMail._id, token, success: `${existingMail.Firstname + "" + existingMail.Lastname}, You are Logged in successfully` })
         } else {
             return res.status(400).json({ error: "Incorrect Password" });
         }
@@ -44,7 +44,6 @@ export const Loginctrl = async (req, res) => {
         res.status(400).json({ error: "Network Error" });
     }
 }
-
 export const Changepassword = async (req, res) => {
     const { Email_Id, password } = req.body
     try {
@@ -55,11 +54,13 @@ export const Changepassword = async (req, res) => {
     } catch (error) {
         return res.status(400).json({ error: error.message })
     }
+
+
 }
 
 export const Userctrl = async (req, res) => {
 
-    const find = await register.find({}).sort({ Firstname: 1 });
+    const find = await register.find({}).sort({ Username: 1 });
     res.status(200).json(find);
 }
 
