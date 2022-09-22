@@ -5,6 +5,8 @@ import verify from './routes/VerificationRoute.js';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
+import clientrouter from './routes/configrouter.js';
+
 dotenv.config();
 
 const app = express()
@@ -23,6 +25,11 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 app.use('/api/log', registers)
 app.use('/api/log', verify)
+
+app.use('/Addclient', clientrouter);
+app.use('/GetClient', clientrouter);
+app.use('/GetClientfalse', clientrouter);
+app.use('/EditCLient', clientrouter);
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {

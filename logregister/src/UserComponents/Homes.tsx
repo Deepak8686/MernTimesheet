@@ -115,7 +115,7 @@ const Homes = () => {
                 <Content>
                     <Routes>
                         <Route path="/" element={<Getemployee />} />
-                        <Route path="configuration" element={<Configuration />} />
+                        <Route path="/configuration/*" element={<Configuration />} />
                         <Route path="employees" element={<Getemployee />} />
                         <Route path="userprofile" element={<Userprofile />} />
                     </Routes>

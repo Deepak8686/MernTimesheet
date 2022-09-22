@@ -1,9 +1,10 @@
 import { LogoutOutlined, SettingOutlined, ProfileFilled, FieldTimeOutlined, TeamOutlined, DashboardOutlined } from "@ant-design/icons";
 import { Avatar, Layout, Menu, Modal, Popconfirm, message } from 'antd';
 import Button from "antd-button-color";
-import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation, Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Client from "./client";
 
 const Configuration = () => {
 
@@ -63,8 +64,11 @@ const Configuration = () => {
             <Layout>
 
                 <Content>
+                    <Button style={{ marginRight: '900px' }}>
+                        <Link to="/Home/configuration/Client">Client</Link>
+                    </Button>
                     <Routes>
-                        <Route path="" />
+                        <Route path="/Client" element={<Client />} />
                         <Route path="" />
                         <Route path="" />
                     </Routes>
