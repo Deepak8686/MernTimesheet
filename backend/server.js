@@ -6,6 +6,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
 import clientrouter from './routes/configrouter.js';
+import Employeeroutes from './routes/Employeeroute.js';
 
 dotenv.config();
 
@@ -25,11 +26,9 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 app.use('/api/log', registers)
 app.use('/api/log', verify)
+app.use('/api/log', Employeeroutes)
 
-app.use('/Addclient', clientrouter);
-app.use('/GetClient', clientrouter);
-app.use('/GetClientfalse', clientrouter);
-app.use('/EditCLient', clientrouter);
+app.use('/client', clientrouter);
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {

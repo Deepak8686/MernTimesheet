@@ -31,9 +31,9 @@ export const IsactiveEmp = async (req, res) => {
     const { Employee_Id, Isactive } = req.body
     try {
 
-        if (!Employee_Id) return res.status(400).json({ error: "Employee not found" });
+        if (!Employee_Id) return res.status(400).json({ error: "Employee Id is missing" });
         const isemp = await register.findOneAndUpdate({ Employee_Id }, { Isactive });
-        return res.status(200).json({ success: "Updated Successfull" });
+        return res.status(200).json(isemp);
     } catch (error) {
         return res.status(400).json({ error: error.message });
     }
