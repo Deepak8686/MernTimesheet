@@ -15,7 +15,6 @@ const AuthProvider = ({ children }: any) => {
     const [state, dispatch] = useReducer(Reducer, initialProvider);
 
     const setToken = (data: any) => {
-        debugger
         dispatch({ type: SET_TOKEN, payload: data });
     };
 

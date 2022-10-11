@@ -1,6 +1,7 @@
 import register from '../models/RegisterModel.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { locationSuccess, locationError } from '../Common/location.js';
 
 export const registerctrl = async (req, res) => {
 
@@ -36,9 +37,11 @@ export const Loginctrl = async (req, res) => {
         if (hasedPassword == true) {
             const token = jwt.sign({ name: existingMail.Username, id: existingMail._id }, 'FirstJwtTokenCreation', { expiresIn: '5h' });
             return res.status(200).json({ userId: existingMail._id, token, success: `${existingMail.Firstname + "" + existingMail.Lastname}, You are Logged in successfully` })
+
         } else {
             return res.status(400).json({ error: "Incorrect Password" });
         }
+
 
     } catch (error) {
         res.status(400).json({ error: "Network Error" });

@@ -10,6 +10,8 @@ import axios from "axios";
 import './Home.css';
 import Userprofile from "./Userprofile/Userprofile";
 import Configuration from "./Configuration/Configuration";
+import Addemployee from "./Employee/AddEmployee";
+import Editemployee from "./Employee/Editemployee";
 
 const Homes = () => {
 
@@ -89,7 +91,7 @@ const Homes = () => {
                     style={{ marginTop: "75%" }}
                     theme="dark"
                     mode="inline"
-                    defaultSelectedKeys={[current]}
+                    defaultSelectedKeys={[""]}
                     items={items}
                     onClick={handleClick}
                 />
@@ -118,6 +120,8 @@ const Homes = () => {
                         <Route path="/configuration/*" element={<Configuration />} />
                         <Route path="employees" element={<Getemployee />} />
                         <Route path="userprofile" element={<Userprofile />} />
+                        <Route path="addemployee" element={<Addemployee />} />
+                        <Route path="editemployee" element={<Editemployee />} />
                     </Routes>
                 </Content>
             </Layout >

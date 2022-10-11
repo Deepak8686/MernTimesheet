@@ -160,7 +160,6 @@ const Register: React.FC = () => {
                                             return current && current > moment(customDate, "YYYY - MM - DD");
                                         }}
                                         onChange={handleStartDate}
-                                    // onChange={(e) => setJoiningdate(e.target.value)}
                                     />
                                 </Form.Item>
 
