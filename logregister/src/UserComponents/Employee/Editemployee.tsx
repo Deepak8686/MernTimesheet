@@ -10,7 +10,7 @@ const Editemployee = () => {
     const location = useLocation();
     const [isVisible, setIsvisible] = useState(true);
     const val = location.state;
-    console.log(val);
+
 
     const cancel = () => {
         setIsvisible(false);

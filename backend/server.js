@@ -5,8 +5,9 @@ import verify from './routes/VerificationRoute.js';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
-import clientrouter from './routes/configrouter.js';
+import configurationrouter from './routes/configrouter.js';
 import Employeeroutes from './routes/Employeeroute.js';
+import timerouter from './routes/Timesheetrouter.js';
 
 dotenv.config();
 
@@ -28,7 +29,8 @@ app.use('/api/log', registers)
 app.use('/api/log', verify)
 app.use('/api/log', Employeeroutes)
 
-app.use('/client', clientrouter);
+app.use('/api/log', configurationrouter);
+app.use('/api/log', timerouter);
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {

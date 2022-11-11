@@ -30,11 +30,11 @@ const Getemployee = () => {
         },
         {
             title: "Designation",
-            dataIndex: "Designation_Id"
+            dataIndex: "Designation_Name"
         },
         {
             title: "Type",
-            dataIndex: "Employeetype_Id"
+            dataIndex: "Employeetype_Name"
         },
         {
             title: "Email ID",
@@ -86,7 +86,7 @@ const Getemployee = () => {
     const hasSelected = selectedRows.length > 0;
     const hassSelected = selectedRows.length > 0 && selectedRows.length == 1;
     const val = selectedRows[0];
-    console.log(val);
+
     const rowSelection = {
         onChange: (selectedRowKeys: any, selectedRow: any) => {
             setSelectedRows(selectedRow);

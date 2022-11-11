@@ -1,12 +1,36 @@
 import express from 'express';
-import { AddCLient, Editclient, GetClient, GetClientfalse } from '../controllers/Clientcontroller.js';
+import {
+    addCLient,
+    addDesignation,
+    addEmployeetype,
+    editClient,
+    editDesignation,
+    editEmployeetype,
+    getClient,
+    getDeactiveClient,
+    getDeactiveDesignation,
+    getDeactiveEmployeetype,
+    getDesignation,
+    getEmployeetype
+} from '../controllers/Configurationcontroller.js';
+import auth from '../middleware/middleware.js';
 
-const clientrouter = express.Router();
+const configurationrouter = express.Router();
 
 
-clientrouter.post('/addclientrouter', AddCLient);
-clientrouter.get('/getclientrouter', GetClient);
-clientrouter.get('/getclientrouterfalse', GetClientfalse);
-clientrouter.put('/putclientrouter', Editclient);
+configurationrouter.post('/addclient', auth, addCLient);
+configurationrouter.get('/getclient', auth, getClient);
+configurationrouter.get('/getdeactiveclient', auth, getDeactiveClient);
+configurationrouter.put('/editclient/:Client_Id', auth, editClient);
 
-export default clientrouter;
+configurationrouter.post('/adddesignation', auth, addDesignation);
+configurationrouter.get('/getdesignation', auth, getDesignation);
+configurationrouter.get('/getdeactivedesignation', auth, getDeactiveDesignation);
+configurationrouter.put('/editdesignation/:Designation_Id', auth, editDesignation);
+
+configurationrouter.post('/addemployeetype', auth, addEmployeetype);
+configurationrouter.get('/getemployeetype', auth, getEmployeetype);
+configurationrouter.get('/getdeactiveemployeetype', auth, getDeactiveEmployeetype);
+configurationrouter.put('/editemployeetype/:Employeetype_Id', auth, editEmployeetype);
+
+export default configurationrouter;

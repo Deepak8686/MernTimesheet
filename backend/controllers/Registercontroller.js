@@ -42,7 +42,6 @@ export const Loginctrl = async (req, res) => {
             return res.status(400).json({ error: "Incorrect Password" });
         }
 
-
     } catch (error) {
         res.status(400).json({ error: "Network Error" });
     }
@@ -57,14 +56,24 @@ export const Changepassword = async (req, res) => {
     } catch (error) {
         return res.status(400).json({ error: error.message })
     }
-
-
 }
 
 export const Userctrl = async (req, res) => {
+    try {
+        const find = await register.find({ Isactive: true }).sort({ Username: 1 });
+        res.status(200).json(find);
+    } catch (error) {
+        return res.status(400).json({ error: error.message });
+    }
+}
 
-    const find = await register.find({}).sort({ Username: 1 });
-    res.status(200).json(find);
+export const UserDeactivectrl = async (req, res) => {
+    try {
+        const find = await register.find({ Isactive: false }).sort({ Username: 1 });
+        return res.status(200).json(find);
+    } catch (error) {
+        return res.status(400).json({ error: error.message });
+    }
 }
 
 export const Singleuserctrl = async (req, res) => {

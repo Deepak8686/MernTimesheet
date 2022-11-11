@@ -18,7 +18,7 @@ const designationSchema = new Schema({
 }, { timestamps: true }, { _id: false },)
 
 autoIncrement.initialize(mongoose.connection);
-registerSchema.plugin(autoIncrement.plugin, {
+designationSchema.plugin(autoIncrement.plugin, {
     model: "Designation",
     field: "Designation_Id",
     startAt: 1,

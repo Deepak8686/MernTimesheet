@@ -18,7 +18,7 @@ const employeetypeSchema = new Schema({
 }, { timestamps: true }, { _id: false })
 
 autoIncrement.initialize(mongoose.connection);
-registerSchema.plugin(autoIncrement.plugin, {
+employeetypeSchema.plugin(autoIncrement.plugin, {
     model: "Employeetype",
     field: "Employeetype_Id",
     startAt: 1,
